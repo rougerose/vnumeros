@@ -14,6 +14,8 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'cfg_exemple_explication' => 'Explication de cet exemple',
 	'cfg_rubrique_numeros_explication' => 'Identifiant numérique de la rubrique qui contient les numéros',
 	'cfg_rubrique_numeros_label' => 'Rubrique numéro',
+	'cfg_taxe_explication' => "TVA par défaut applicable aux numéros. Saisie de la forme 0.055 pour une TVA à 5.5% par exemple.",
+	'cfg_taxe_label' => "TVA",
 	'cfg_titre_parametrages' => 'Paramétrages',
 	
 	// D 
@@ -26,6 +28,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	
 	// P
 	'pages_total_label' => "Nombre de pages",
+	'prix_ht_label' => "Prix HT",
 	
 	// R
 	'redacteurchef_label' => "Rédaction en chef",
@@ -33,6 +36,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'reference_label' => 'Référence du numéro',
 
 	// T
+	'taxe_explication' => "TVA applicable. La valeur pré-saisie est celle de la configuration",
 	'titre_page_configurer_vnumeros' => 'Configuration des numéros',
 	'titre_config_reference_update' => 'Mise à jour des références des numéros de Vacarme',
 	

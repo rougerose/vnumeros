@@ -49,6 +49,11 @@ function autoriser_rubrique_voirextra_isbn($faire, $type, $id, $qui, $opt) {
 	return _autoriser_vnumeros_extras($id);
 }
 
+
+function autoriser_rubrique_voirextra_prix_ht($faire, $type, $id, $qui, $opt) {
+	return _autoriser_vnumeros_extras($id);
+}
+
 function autoriser_rubrique_voirextra_date_numero($faire, $type, $id, $qui, $opt) {
 	return _autoriser_vnumeros_extras($id);
 }
@@ -70,6 +75,11 @@ function autoriser_rubrique_modifierextra_reference($faire, $type, $id, $qui, $o
 }
 
 function autoriser_rubrique_modifierextra_isbn($faire, $type, $id, $qui, $opt) {
+	return _autoriser_vnumeros_extras($id);
+}
+
+
+function autoriser_rubrique_modifierextra_prix_ht($faire, $type, $id, $qui, $opt) {
 	return _autoriser_vnumeros_extras($id);
 }
 

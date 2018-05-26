@@ -34,6 +34,17 @@ function vnumeros_declarer_champs_extras($champs = array()) {
 		)
 	);
 	
+	$champs['spip_rubriques']['prix_ht'] = array(
+		'saisie' => 'vnumeros_prix',
+		'options' => array(
+			'nom' => 'prix_ht',
+			'label' => _T('vnumeros:prix_ht_label'),
+			'sql' => 'DECIMAL(10,2) NOT NULL DEFAULT 0',
+			'type' => 'text',
+			'obligatoire' => 'oui'
+		)
+	);
+	
 	$champs['spip_rubriques']['date_numero'] = array(
 		'saisie' => 'date',
 		'options' => array(
@@ -53,7 +64,7 @@ function vnumeros_declarer_champs_extras($champs = array()) {
 		'saisie' => 'input',
 		'options' => array(
 			'nom' => 'pages_total',
-			'label' => _T('vnumeros:pages_total'),
+			'label' => _T('vnumeros:pages_total_label'),
 			'sql' => 'bigint NOT NULL DEFAULT 0',
 			'obligatoire' => 'oui',
 		)
