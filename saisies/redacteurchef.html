@@ -1,0 +1,107 @@
+<select name="auteurs" id="champ_[(#ENV{id,auteurs}|saisie_nom2classe)]"[ class="(#ENV{class})"]>
+		<option value="">[(#ENV{option_intro})]</option>
+	<BOUCLE_auteurs(AUTEURS){statut IN 1comite, 0minirezo}{par nom}{tout}>
+		<option value="#ID_AUTEUR">#NOM</option>
+	</BOUCLE_auteurs>
+</select>#ENV
+<input type="hidden" name="#ENV{nom}" value="#ENV{valeur_forcee, #ENV{valeur, #ENV{defaut}}}">
+
+<script type="text/javascript">
+	/*<![CDATA[*/
+		
+	/*]]>*/
+</script>
+<!--
+<![CDATA[*/
+function date_picker_options(){
+	return {
+		buttonText: 'Afficher le calendrier',
+		buttonImage: '../plugins-dist/organiseur/prive/themes/spip/images/calendrier-16.png',
+		buttonImageOnly: true,
+		closeText: 'Fermer',
+		prevText: 'précédent',
+		nextText: 'suivant',
+		currentText: 'aujourd’hui',
+		closeText: 'Fermer',
+		monthNames: [
+			'janvier','février','mars','avril','mai','juin',
+			'juillet','août','septembre','octobre','novembre','décembre'],
+		monthNamesShort: [
+			'janv.','févr.','mars','avr.','mai','juin',
+			'juil.','août','sept.','oct.','nov.','déc.'],
+		dayNames: [
+			'dimanche','lundi','mardi','mercredi',
+			'jeudi','vendredi','samedi'],
+		dayNamesShort: [
+			'dim.','lun.','mar.','mer.',
+			'jeu.','ven.','sam.'],
+		dayNamesMin: [
+			'd.','l.','m.','m.',
+			'j.','v.','s.'],
+		dateFormat: 'dd/mm/yy',
+		firstDay: 1,
+		changeMonth: true,
+		changeYear: true,
+		showOtherMonths: true,
+		selectOtherMonths: true,
+		yearRange: "c-60:c+40"
+	};
+}
+function time_picker_options() {
+	return {
+		step: 30,
+	};
+}
+function date_picker_init(){
+	// Initialisation du sélecteur sur les champs de date
+	jQuery('input.date').not('.datePicker')
+		.addClass('datePicker').each(function() {
+			// Pour chaque champ, on regarde s'il y a des options propres
+			var options = {showOn: 'button'};
+			if (jQuery(this).data('startdate')) {
+				options.minDate = jQuery(this).data('startdate');
+			}
+			if (jQuery(this).data('enddate')) {
+				options.maxDate = jQuery(this).data('enddate');
+			}
+			if (jQuery(this).data('yearrange')) {
+				options.yearRange = jQuery(this).data('yearrange');
+			}
+			jQuery(this)
+				.datepicker(jQuery.extend(date_picker_options(),options))
+				.trigger('datePickerLoaded');
+		});
+	
+	// Initialisation du sélecteur sur les champs d'heure
+	jQuery("input.heure").not('.timePicker')
+		.addClass('timePicker').each(function() {
+			// Pour chaque champ, on regarde s'il y a des options propres
+			var options = {};
+			if (jQuery(this).data('starttime')) {
+				options.startTime = jQuery(this).data('starttime');
+			}
+			if (jQuery(this).data('endtime')) {
+				options.endTime = jQuery(this).data('endtime');
+			}
+			if (jQuery(this).data('step')) {
+				options.step = jQuery(this).data('step');
+			}
+			jQuery(this)
+				.timePicker(jQuery.extend(time_picker_options(), options));
+		});
+}
+var date_picker_loading;
+if (window.jQuery){
+	jQuery(function(){
+		if (jQuery('input.date,input.heure').length
+			&& typeof date_picker_loading=="undefined"){
+			date_picker_loading = jQuery.getScript('../local/cache-js/jsdyn-formulaires_dateur_jquery_dateur_js-6bcd9e3a.js?1527154979');
+			date_picker_loading.done(function(){
+				date_picker_init();
+				onAjaxLoad(date_picker_init);
+			})
+		}
+	});
+}
+/*]]>*/
+-->
