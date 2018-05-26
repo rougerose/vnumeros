@@ -28,6 +28,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'pages_total_label' => "Nombre de pages",
 	
 	// R
+	'redacteurchef_label' => "Rédaction en chef",
 	'reference_explication' => 'Exemple pour Vacarme 83 : v0083. Soit lettre v suivie du numéro sur 4 chiffres',
 	'reference_label' => 'Référence du numéro',
 

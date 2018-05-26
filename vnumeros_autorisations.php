@@ -49,6 +49,18 @@ function autoriser_rubrique_voirextra_isbn($faire, $type, $id, $qui, $opt) {
 	return _autoriser_vnumeros_extras($id);
 }
 
+function autoriser_rubrique_voirextra_date_numero($faire, $type, $id, $qui, $opt) {
+	return _autoriser_vnumeros_extras($id);
+}
+
+function autoriser_rubrique_voirextra_pages_total($faire, $type, $id, $qui, $opt) {
+	return _autoriser_vnumeros_extras($id);
+}
+
+function autoriser_rubrique_voirextra_redacteurchef($faire, $type, $id, $qui, $opt) {
+	return _autoriser_vnumeros_extras($id);
+}
+
 
 //
 // Fonctions de modification des champs extra uniquement sur les rubriques Numéros
@@ -58,6 +70,18 @@ function autoriser_rubrique_modifierextra_reference($faire, $type, $id, $qui, $o
 }
 
 function autoriser_rubrique_modifierextra_isbn($faire, $type, $id, $qui, $opt) {
+	return _autoriser_vnumeros_extras($id);
+}
+
+function autoriser_rubrique_modifierextra_date_numero($faire, $type, $id, $qui, $opt) {
+	return _autoriser_vnumeros_extras($id);
+}
+
+function autoriser_rubrique_modifierextra_pages_total($faire, $type, $id, $qui, $opt) {
+	return _autoriser_vnumeros_extras($id);
+}
+
+function autoriser_rubrique_modifierextra_redacteurchef($faire, $type, $id, $qui, $opt) {
 	return _autoriser_vnumeros_extras($id);
 }
 

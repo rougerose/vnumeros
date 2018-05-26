@@ -60,12 +60,14 @@ function vnumeros_declarer_champs_extras($champs = array()) {
 	);
 	
 	$champs['spip_rubriques']['redacteurchef'] = array(
-		'saisie' => 'redacteurchef',
+		'saisie' => 'auteurs',
 		'options' => array(
 			'nom' => 'redacteurchef',
 			'label' => _T('vnumeros:redacteurchef_label'),
 			'sql' => "text NOT NULL DEFAULT ''",
 			'obligatoire' => 'oui',
+			'multiple' => 'on',
+			'statut' => array('0minirezo', '1comite')
 		)
 	);
 
