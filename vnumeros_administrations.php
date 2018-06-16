@@ -32,6 +32,10 @@ function vnumeros_upgrade($nom_meta_base_version, $version_cible) {
 	// 	array('maj_tables', array('spip_rubriques'))
 	// );
 	cextras_api_upgrade(vnumeros_declarer_champs_extras(), $maj['create']);
+	
+	$maj['1.0.1'] = array(
+		array('sql_alter', 'TABLE spip_rubriques CHANGE prix_ht prix_ht DECIMAL(10,3) NOT NULL DEFAULT 0')
+	);
 
 	include_spip('base/upgrade');
 	maj_plugin($nom_meta_base_version, $version_cible, $maj);

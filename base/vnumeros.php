@@ -39,7 +39,7 @@ function vnumeros_declarer_champs_extras($champs = array()) {
 		'options' => array(
 			'nom' => 'prix_ht',
 			'label' => _T('vnumeros:prix_ht_label'),
-			'sql' => 'DECIMAL(10,2) NOT NULL DEFAULT 0',
+			'sql' => 'DECIMAL(10,3) NOT NULL DEFAULT 0',
 			'type' => 'text',
 			'obligatoire' => 'oui'
 		)
