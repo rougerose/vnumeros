@@ -48,3 +48,31 @@ function vnumeros_convertir_titre_reference($titre) {
 	
 	return $reference;
 }
+
+
+/**
+ * Liste des numéros disponibles
+ *
+ * A partir d'un tableau indiquant les références numéro_debut et numéro_fin
+ * d'un abonnement, rechercher les numéros publiés et disponibles pour envoi.
+ * 
+ * @param  array $numeros_debut_fin
+ * @return array id_rubrique des numéros disponibles
+ */
+function vnumeros_lister($numeros_debut_fin) {
+	// début et fin sont sous la forme d'une référence vXXXX
+	$numeros_nombre = str_replace('v', '', $numeros_debut_fin);
+	
+	// tous les numéros d'un abonnement
+	$references = array_map(function($n) { return sprintf('v%04d', $n); }, range(reset($numeros_nombre), end($numeros_nombre), 1) );
+	
+	// rubrique qui contient les numéros
+	$rubrique_numeros = lire_config('vnumeros/rubrique_numeros');
+	
+	$numeros_disponibles = sql_allfetsel(
+		'id_rubrique',
+		'spip_rubriques', 
+		'id_parent='.sql_quote($rubrique_numeros).' AND statut='.sql_quote('publie').' AND '.sql_in('reference', $references));
+	
+	return $numeros_disponibles;
+}

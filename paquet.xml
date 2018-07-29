@@ -19,6 +19,9 @@
 	<necessite nom="verifier" compatibilite="[1.0.6;]" /> 
 	<necessite nom="cextras" compatibilite="[3.11.3;[" />
 	<necessite nom="prix" />
+	<necessite nom="commandes" />
+	
+	<utilise nom="venvois" />
 	
 	<pipeline nom="declarer_champs_extras" inclure="base/vnumeros.php" />
 	<pipeline nom="declarer_tables_objets_sql" inclure="base/vnumeros.php" />
