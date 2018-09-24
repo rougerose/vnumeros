@@ -1,0 +1,24 @@
+[(#AUTORISER{configurer,_vnumeros}|sinon_interdire_acces)]
+
+<h1 class="grostitre"><:vnumeros:titre_page_configurer_vnumeros:></h1>
+
+<div class="ajax">
+	#FORMULAIRE_CONFIGURER_VNUMEROS
+</div>
+
+
+<h3 class=""><:vnumeros:titre_config_reference_update:></h3>
+</B_numeros>
+[(#SET{references, #ARRAY})]
+<BOUCLE_numeros(RUBRIQUES){id_secteur=115}{profondeur=1}{par titre}{reference=0}>
+	[(#SET{references, #GET{references}|push{#ID_RUBRIQUE}})]
+</BOUCLE_numeros>
+	[(#GET{references}|count|oui)
+		[(#SET{references_json, #GET{references}|json_encode})]
+		[(#BOUTON_ACTION{<:vnumeros:update_bouton_label:>, #URL_ACTION_AUTEUR{update_reference_numero,#GET{references_json}, #SELF}, ajax})]
+	]
+</B_numeros>
+	<div class="box success">
+		<p class="bd inner">Aucune mise à jour à faire</p>
+	</div>
+<//B_numeros>
