@@ -87,24 +87,3 @@ function vnumeros_calculer_reference_numero_futur($duree_abonnement, $numero_deb
 	$reference_numero_futur = $numero_debut + $numeros_a_servir;
 	return $reference_numero_futur;
 }
-
-
-/*
-function calculer_numero_futur($reference, $rang = 1, $titre = false) {
-	// référence du numéro suivant : extraire référence actuelle + rang souhaité
-	// exemple : [v]0080 + 1
-	$reference_suivant = substr($reference, 1) + $rang;
-	
-	// le titre de ce numéro
-	$titre_suivant = 'Vacarme ' . str_pad($reference_suivant, 2, 0, STR_PAD_LEFT);
-	
-	if ($titre) {
-		$numero = $titre_suivant;
-	} else {
-		include_spip('inc/vabonnements_numero');
-		$numero = vabonnements_numero_convertir_titre_reference($titre_suivant);
-	}
-	
-	return $numero;
-}
- */
