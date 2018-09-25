@@ -34,18 +34,17 @@ function vnumeros_referencer($id_rubrique) {
 /**
  * Convertir le titre d'une rubrique en référence.
  *
- * Vacarme 80 => v0080
+ * Vacarme 80 => 80
  * 
  * @param  string $titre
  * @return string
  */
 function vnumeros_convertir_titre_reference($titre) {
 	if (preg_match('!\d+!', $titre, $m)) {
-		$reference = 'v' . str_pad(intval($m[0]), 4, '0', STR_PAD_LEFT);
+		$reference = intval($m[0]);
 	} else {
 		$reference = 'erreur !';
 	}
-	
 	return $reference;
 }
 
@@ -59,12 +58,10 @@ function vnumeros_convertir_titre_reference($titre) {
  * @param  array $numeros_debut_fin
  * @return array id_rubrique des numéros disponibles
  */
-function vnumeros_lister($numeros_debut_fin) {
-	// début et fin sont sous la forme d'une référence vXXXX
-	$numeros_nombre = str_replace('v', '', $numeros_debut_fin);
+function vnumeros_lister_disponibles($numeros_debut_fin) {
 	
 	// tous les numéros d'un abonnement
-	$references = array_map(function($n) { return sprintf('v%04d', $n); }, range(reset($numeros_nombre), end($numeros_nombre), 1) );
+	$references = range(reset($numeros_nombre), end($numeros_nombre), 1);
 	
 	// rubrique qui contient les numéros
 	$rubrique_numeros = lire_config('vnumeros/rubrique_numeros');
@@ -76,3 +73,38 @@ function vnumeros_lister($numeros_debut_fin) {
 	
 	return $numeros_disponibles;
 }
+
+/**
+ * Calculer la référence d'un numéro à paraître
+ * 
+ * @param  int $duree_abonnement Durée (en mois)
+ * @param  int $numero_debut Référence du premier numéro
+ * @return int Référence du numéro à paraître
+ */
+function vnumeros_calculer_reference_numero_futur($duree_abonnement, $numero_debut) {
+	$periodicite = _VACARME_PERIODICITE;
+	$numeros_a_servir = ($duree_abonnement / $periodicite) - 1;
+	$reference_numero_futur = $numero_debut + $numeros_a_servir;
+	return $reference_numero_futur;
+}
+
+
+/*
+function calculer_numero_futur($reference, $rang = 1, $titre = false) {
+	// référence du numéro suivant : extraire référence actuelle + rang souhaité
+	// exemple : [v]0080 + 1
+	$reference_suivant = substr($reference, 1) + $rang;
+	
+	// le titre de ce numéro
+	$titre_suivant = 'Vacarme ' . str_pad($reference_suivant, 2, 0, STR_PAD_LEFT);
+	
+	if ($titre) {
+		$numero = $titre_suivant;
+	} else {
+		include_spip('inc/vabonnements_numero');
+		$numero = vabonnements_numero_convertir_titre_reference($titre_suivant);
+	}
+	
+	return $numero;
+}
+ */

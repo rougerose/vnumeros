@@ -12,13 +12,9 @@ function vnumeros_declarer_champs_extras($champs = array()) {
 			'label' => _T('vnumeros:reference_label'),
 			'explication' => _T('vnumeros:reference_explication'),
 			'type' => 'text',
-			'sql' => "tinytext NOT NULL DEFAULT ''",
+			'sql' => 'int(5) UNSIGNED NOT NULL DEFAULT 0',
 			'obligatoire' => 'oui'
 		),
-		'verifier' => array(
-			'type' => 'regex',
-			'options' => array('modele' => '!v\d{4}!')
-		)
 	);
 
 	$champs['spip_rubriques']['isbn'] = array(

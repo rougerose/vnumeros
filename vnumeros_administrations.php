@@ -28,13 +28,22 @@ include_spip('base/vnumeros');
 function vnumeros_upgrade($nom_meta_base_version, $version_cible) {
 	$maj = array();
 	
-	// $maj['create'] = array(
-	// 	array('maj_tables', array('spip_rubriques'))
-	// );
 	cextras_api_upgrade(vnumeros_declarer_champs_extras(), $maj['create']);
 	
 	$maj['1.0.1'] = array(
 		array('sql_alter', 'TABLE spip_rubriques CHANGE prix_ht prix_ht DECIMAL(10,3) NOT NULL DEFAULT 0')
+	);
+
+	$maj['1.1.1'] = array(
+		array('sql_alter', 'TABLE spip_rubriques DROP COLUMN reference')
+	);
+	
+	$maj['1.1.2'] = array(
+		array('sql_alter', 'TABLE spip_rubriques ADD reference INT(4) UNSIGNED NOT NULL DEFAULT 0 AFTER pages_total')
+	);
+	
+	$maj['1.1.3'] = array(
+		array('sql_alter', 'TABLE spip_rubriques DROP saison_annee')
 	);
 
 	include_spip('base/upgrade');

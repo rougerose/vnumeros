@@ -26,6 +26,9 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'isbn_explication' => "13 chiffres, sans tiret",
 	'isbn_label' => "Numéro ISBN",
 	
+	'numero' => "1 numéro",
+	'numeros' => "@nb@ numéros",
+	
 	// P
 	'pages_total_label' => "Nombre de pages",
 	'prix_ht_label' => "Prix HT",
