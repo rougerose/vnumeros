@@ -61,7 +61,7 @@ function vnumeros_convertir_titre_reference($titre) {
 function vnumeros_lister_disponibles($numeros_debut_fin) {
 	
 	// tous les numéros d'un abonnement
-	$references = range(reset($numeros_nombre), end($numeros_nombre), 1);
+	$references = range(reset($numeros_debut_fin), end($numeros_debut_fin), 1);
 	
 	// rubrique qui contient les numéros
 	$rubrique_numeros = lire_config('vnumeros/rubrique_numeros');

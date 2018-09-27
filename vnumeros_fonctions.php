@@ -42,17 +42,17 @@ function filtre_numero_date_normalisee($date, $rang = 0) {
 /**
  * Intervalles des références de numéro entre deux numéros.
  * 
- * @param  array $numeros_debut_fin référence premier numéro, référene dernier numero
+ * @param  array $numeros_debut_fin référence premier numéro, référence dernier numero
  * @return array la clé de chaque élément est équivalente à chaque valeur.
  */
 function filtre_numeros_liste_intervalles($numeros_debut_fin) {
 	// tous les numéros entre deux références
-	$references = range(reset($numeros_nombre), end($numeros_nombre), 1);
+	$references = range(reset($numeros_debut_fin), end($numeros_debut_fin), 1);
 	
 	$liste = array();
 	
 	foreach ($references as $reference) {
-		$liste[$reference] = $reference;
+		$liste[$reference] = 'Vacarme '.$reference;
 	}
 	
 	return $liste;
