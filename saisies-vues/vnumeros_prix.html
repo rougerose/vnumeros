@@ -1,0 +1,14 @@
+#SET{taxe, #CONFIG{vnumeros/taxe, 0.2}}
+[(#SET{prix, #ENV{valeur}|plus{#ENV{valeur}|mult{#GET{taxe}}}})]
+
+[<p class="prix_ht">(#ENV{valeur}|prix_formater)</p>]
+[(#REM) 
+	<!-- 
+		Fermer la div insérée automatiquement par la saisie,
+		puis insérer le prix TTC
+	-->
+][</div>
+<strong class="label">PRIX TTC</strong>
+<div class="valeur">
+	<p class="prix_ttc">(#GET{prix}|prix_formater)</p>
+</div>]
