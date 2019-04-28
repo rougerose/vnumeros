@@ -29,7 +29,7 @@ function vnumeros_declarer_champs_extras($champs = array()) {
 			'maxlength' => 13
 		)
 	);
-	
+
 	$champs['spip_rubriques']['prix_ht'] = array(
 		'saisie' => 'vnumeros_prix',
 		'options' => array(
@@ -40,7 +40,7 @@ function vnumeros_declarer_champs_extras($champs = array()) {
 			'obligatoire' => 'oui'
 		)
 	);
-	
+
 	$champs['spip_rubriques']['date_numero'] = array(
 		'saisie' => 'date',
 		'options' => array(
@@ -55,7 +55,7 @@ function vnumeros_declarer_champs_extras($champs = array()) {
 			'options' => array('normaliser' => 'datetime')
 		)
 	);
-	
+
 	$champs['spip_rubriques']['pages_total'] = array(
 		'saisie' => 'input',
 		'options' => array(
@@ -65,7 +65,7 @@ function vnumeros_declarer_champs_extras($champs = array()) {
 			'obligatoire' => 'oui',
 		)
 	);
-	
+
 	$champs['spip_rubriques']['redacteurchef'] = array(
 		'saisie' => 'auteurs',
 		'options' => array(
@@ -76,6 +76,88 @@ function vnumeros_declarer_champs_extras($champs = array()) {
 			'multiple' => 'on',
 			'statut' => array('0minirezo', '1comite')
 		)
+	);
+
+	$champs['spip_articles']['pages_article'] = array(
+		'saisie' => 'fieldset',
+		'options' => array(
+			'nom' => 'pages_article',
+			'label' => 'Pages de l\'article',
+			'pliable' => 'on',
+		),
+		'saisies' => array(
+			0 => array(
+				'saisie' => 'input',
+				'options' => array(
+					'nom' => 'page_debut',
+					'label' => 'Numéro première page de l\'article',
+					'type' => 'text',
+					'maxlength' => '3',
+					'autocomplete' => 'defaut',
+					'sql' => 'bigint(3) NOT NULL DEFAULT 0',
+					'rechercher_ponderation' => '2',
+				),
+				'verifier' => array(
+					'type' => 'entier',
+					'options' => array(
+						'min' => '0',
+						'max' => '999',
+					),
+				),
+			),
+			1 => array(
+				'saisie' => 'input',
+				'options' => array(
+					'nom' => 'page_fin',
+					'label' => 'Numéro page fin de l\'article',
+					'type' => 'text',
+					'maxlength' => '3',
+					'autocomplete' => 'defaut',
+					'sql' => 'bigint(3) NOT NULL DEFAULT 0',
+					'rechercher_ponderation' => '2',
+				),
+				'verifier' => array(
+					'type' => 'entier',
+					'options' => array(
+						'min' => '0',
+						'max' => '999',
+					),
+				),
+			),
+			2 => array(
+				'saisie' => 'input',
+				'options' => array(
+					'nom' => 'pages_total',
+					'label' => 'Nombre total de pages de l\'article',
+					'type' => 'text',
+					'maxlength' => '3',
+					'autocomplete' => 'defaut',
+					'sql' => 'bigint(3) NOT NULL DEFAULT 0',
+					'rechercher_ponderation' => '2',
+				),
+				'verifier' => array(
+					'type' => 'entier',
+					'options' => array(
+						'min' => '0',
+						'max' => '999',
+					),
+				),
+			),
+		),
+	);
+
+	$champs['spip_articles']['credit_logo'] = array(
+		'saisie' => 'input',
+		'options' => array(
+			'nom' => 'credit_logo',
+			'label' => 'Crédits image en logo',
+			'type' => 'text',
+			'size' => '40',
+			'autocomplete' => 'defaut',
+			'sql' => 'text DEFAULT \'\' NOT NULL',
+			'rechercher_ponderation' => '2',
+			'traitements' => '_TRAITEMENT_RACCOURCIS',
+		),
 	);
 
 	return $champs;
